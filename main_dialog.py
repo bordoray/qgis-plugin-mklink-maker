@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -20,9 +21,10 @@ class MainDialog(QDialog):
         self.ui.pushButton_cancel.clicked.connect(self.close)
 
     def make_mklink(self):
-        print(iface)
-        # テキストボックス値取得
+
         plugin_folder = self.ui.qgs_plugin_folder.filePath()
         dev_folder = self.ui.qgs_dev_folder.filePath()
+
+        command = 'mklink /d "' + os.path.join(plugin_folder,os.path.basename(dev_folder))+ '" "' + dev_folder + '"'
         # テキストボックス値をメッセージ表示
-        QMessageBox.information(None, "Result", plugin_folder + "\n" + dev_folder)
+        QMessageBox.information(None, "Result", "I will run \n" + command)
