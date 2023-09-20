@@ -1,15 +1,15 @@
 [general]
-name=Sample
+name=mklink-maker
 qgisMinimumVersion=3.0
-about=QGIS Sample Plugin
-description=QGIS Sample Plugin
+about=QGIS Plugin mklink maker
+description=QGIS Plugin mklink maker
 version=1.0
 
 #Plugin main icon
 icon=imgs/icon.png
 
-author=MIERUNE Inc.
-email=info@mierune.co.jp
+author=bordoray
+email=
 homepage=
 tracker=
 repository=

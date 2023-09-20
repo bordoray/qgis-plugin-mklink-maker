@@ -6,10 +6,9 @@ from PyQt5.QtWidgets import *
 from qgis.core import *
 from qgis.gui import *
 
-from sample_menu_01 import SampleMenu01
-from sample_menu_02 import SampleMenu02
+from main_dialog import MainDialog
 
-PLUGIN_NAME = "sample"
+PLUGIN_NAME = "QGIS plugin mklink maker"
 
 
 class Sample:
@@ -52,10 +51,7 @@ class Sample:
     def initGui(self):
         # メニュー設定
         self.add_action(
-            icon_path=None, text="Menu01", callback=self.show_menu_01, parent=self.win
-        )
-        self.add_action(
-            icon_path=None, text="Menu02", callback=self.show_menu_02, parent=self.win
+            icon_path=None, text="Mklink maker", callback=self.show_dialog, parent=self.win
         )
 
     def unload(self):
@@ -64,10 +60,8 @@ class Sample:
             self.iface.removeToolBarIcon(action)
         del self.toolbar
 
-    def show_menu_01(self):
-        self.sample_menu_01 = SampleMenu01()
-        self.sample_menu_01.show()
+    def show_dialog(self):
+        self.main_dialog = MainDialog()
+        self.main_dialog.show()
 
-    def show_menu_02(self):
-        self.sample_menu_02 = SampleMenu02()
-        self.sample_menu_02.show()
+
