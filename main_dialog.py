@@ -16,12 +16,13 @@ class MainDialog(QDialog):
             os.path.join(os.path.dirname(__file__), "main_dialog.ui"), self
         )
 
-        self.ui.pushButton_run.clicked.connect(self.get_and_show_input_text)
+        self.ui.pushButton_run.clicked.connect(self.make_mklink)
         self.ui.pushButton_cancel.clicked.connect(self.close)
 
-    def get_and_show_input_text(self):
+    def make_mklink(self):
         print(iface)
         # テキストボックス値取得
-        text_value = self.ui.lineEdit.text()
+        plugin_folder = self.ui.qgs_plugin_folder.filePath()
+        dev_folder = self.ui.qgs_dev_folder.filePath()
         # テキストボックス値をメッセージ表示
-        QMessageBox.information(None, "ウィンドウ名", text_value)
+        QMessageBox.information(None, "Result", plugin_folder + "\n" + dev_folder)
