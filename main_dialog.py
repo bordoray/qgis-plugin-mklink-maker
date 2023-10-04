@@ -1,5 +1,5 @@
 import os
-import subprocess
+import ctypes
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -8,6 +8,7 @@ from qgis.core import *
 from qgis.gui import *
 from qgis.PyQt import uic
 from qgis.utils import iface
+
 
 
 class MainDialog(QDialog):
@@ -26,5 +27,5 @@ class MainDialog(QDialog):
         dev_folder = self.ui.qgs_dev_folder.filePath()
 
         command = 'mklink /d "' + os.path.join(plugin_folder,os.path.basename(dev_folder))+ '" "' + dev_folder + '"'
-        # テキストボックス値をメッセージ表示
-        QMessageBox.information(None, "Result", "I will run \n" + command)
+        
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", "cmd.exe", f"/K {command}", None, 1)
